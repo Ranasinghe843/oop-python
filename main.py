@@ -8,16 +8,26 @@ for c in range(len(names)):
 
 # oop
 from employee import *
+from reporting import *
+from shift import *
 
 employees = [
-    Manager("Vera", 2000),
-    Attendant("Chuck", 1800),
-    Attendant("Samantha", 1800),
-    Cook("Roberto", 2100),
-    Mechanic("Joe", 2000),
-    Mechanic("Dave", 2200),
-    Mechanic("Tina", 2300)
+    Manager("Vera", "Schmidt", 2000, MorningShift()),
+    Attendant("Chuck", "Norris", 1800, MorningShift()),
+    Attendant("Samantha", "Carrington", 1800, AfternoonShift()),
+    Cook("Roberto", "Jacketti", 2100, MorningShift()),
+    Mechanic("Joe", "DreiBig", 2000, MorningShift()),
+    Mechanic("Dave", "River", 2200, MorningShift()),
+    Mechanic("Tina", "Rama", 2300, AfternoonShift()),
+    Mechanic("Chuck", "Rainey", 1800, NightShift())
 ]
 
-for e in employees:
-    print(f"{e.name}, ${e.salary}, {e.job_title}")
+reports = [
+    AccountingReport(employees),
+    StaffingReport(employees),
+    ScheduleReport(employees)
+]
+
+for r in reports:
+    r.print_report()
+    print()
